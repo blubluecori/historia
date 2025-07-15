@@ -22,7 +22,46 @@ const datosMalla = [
       { nombre: "Lenguaje y comunicación", tipo: "teorico" },
     ]
   },
-  // Puedes seguir agregando los semestres 3 a 10 aquí...
+  
+  },
+  {
+    semestre: "Semestre 7",
+    ramos: [
+      { nombre: "Metodología de la investigación", tipo: "teórico" },
+      { nombre: "Historia del tiempo presente", tipo: "teórico" },
+      { nombre: "Geografía de Chile y América", tipo: "teórico" },
+      { nombre: "Didáctica de las ciencias sociales", tipo: "teórico" },
+      { nombre: "Práctica intermedia", tipo: "práctico" }
+    ]
+  },
+  {
+    semestre: "Semestre 8",
+    ramos: [
+      { nombre: "Seminario de historia mundial", tipo: "teórico" },
+      { nombre: "Seminario de historia de Chile", tipo: "teórico" },
+      { nombre: "Seminario geografía regional de Valparaíso", tipo: "teórico" },
+      { nombre: "Didáctica de la formación ciudadana", tipo: "teórico" },
+      { nombre: "Métodos de investigación", tipo: "teórico" },
+      { nombre: "Taller reflexión práctica 1", tipo: "práctico" }
+    ]
+  },
+  {
+    semestre: "Semestre 9",
+    ramos: [
+      { nombre: "Monográfico historia I", tipo: "teórico" },
+      { nombre: "Seminario de grado I", tipo: "teórico" },
+      { nombre: "Práctica profesional", tipo: "práctico" }
+    ]
+  },
+  {
+    semestre: "Semestre 10",
+    ramos: [
+      { nombre: "Monográfico historia II", tipo: "teórico" },
+      { nombre: "Elaboración de proyectos educativos", tipo: "teórico" },
+      { nombre: "Taller reflexión práctica 2", tipo: "práctico" },
+      { nombre: "Seminario de grado II", tipo: "teórico" }
+    ]
+  }
 ];
 
 // Cargar estado guardado
