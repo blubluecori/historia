@@ -64,6 +64,7 @@ const datosMalla = [
       { nombre: "Planificación curricular y evaluación", tipo: "teórico" },
       { nombre: "Didáctica de la historia", tipo: "teórico" },
       { nombre: "Taller de integración 2", tipo: "práctico" }
+    ]
   },
   {
     semestre: "Semestre 7",
