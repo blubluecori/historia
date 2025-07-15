@@ -1,6 +1,6 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fdfdfd;
+  background-color: #daefdc;
   color: #333;
   padding: 2rem;
   margin: 0;
@@ -10,7 +10,7 @@ body {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
-  color: #5e548e;
+  color: #b8d8c0;
 }
 
 .malla {
@@ -20,7 +20,7 @@ body {
 }
 
 .semestre {
-  background-color: #fcefee;
+  background-color: #9eb589;
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -29,11 +29,11 @@ body {
 .semestre h2 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #9b5de5;
+  color: #ebefd6;
 }
 
 .ramo {
-  background-color: #e0f7fa;
+  background-color: #cfe7cd;
   padding: 0.7rem;
   margin-bottom: 0.5rem;
   border-left: 5px solid #48cae4;
@@ -43,7 +43,7 @@ body {
 }
 
 .ramo.practico {
-  background-color: #e8f5e9;
+  background-color: #bed197;
   border-left: 5px solid #90be6d;
 }
 
@@ -61,14 +61,14 @@ body {
   margin: 2rem auto 0;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
-  background-color: #cdb4db;
+  background-color: #ebefd6;
   border: none;
   border-radius: 8px;
-  color: #333;
+  color: #9eb589;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 #guardarBtn:hover {
-  background-color: #b5a0c6;
+  background-color: #9eb589;
 }
