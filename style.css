@@ -43,7 +43,7 @@ body {
 }
 
 .ramo.practico {
-  background-color: #6eb47d;
+  background-color: #d5e4cf;
   border-left: 5px solid #90be6d;
 }
 
@@ -54,7 +54,7 @@ body {
 .ramo.completado {
   text-decoration: line-through;
   opacity: 0.6;
-  background-color: #499c70
+  background-color: #d5e4cf;
 }
 
 #guardarBtn {
