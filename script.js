@@ -211,5 +211,5 @@ export default function MallaInteractiva() {
       </div>
     </div>
   )
-    }
-                  
+              }
+                    
