@@ -1,14 +1,4 @@
-module.exports = {
-  theme: {
-    extend: {
-      fontFamily: {
-        script: ['"Satisfy"', 'cursive'],
-      },
-    },
-  },
-}
-
-body {
+ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #d5e4cf;
   color: #2a836b;
