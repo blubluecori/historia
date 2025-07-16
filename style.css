@@ -21,6 +21,9 @@ body {
   margin-bottom: 2rem;
   font-size: 2rem;
   color: #136b69;
+  <h1 className="text-3xl font-script text-green-700">
+  Malla Pedagogía en Historia y ciencias sociales 
+</h1>
 }
 
 .malla {
