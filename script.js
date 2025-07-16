@@ -1,152 +1,215 @@
-const malla = document.getElementById("malla");
-const guardarBtn = document.getElementById("guardarBtn");
+import { useEffect, useState } from "react"
+import { Button } from "@/components/ui/button"
 
-const datosMalla = [
+const courses = [
   {
-    semestre: "Semestre 1",
-    ramos: [
-      { nombre: "Introducción a la historia", tipo: "teorico" },
-      { nombre: "Mundo antiguo", tipo: "teorico" },
-      { nombre: "Historia y filosofía de la educación en Chile y Latam", tipo: "teorico" },
-      { nombre: "Autorregulación", tipo: "teorico" },
-      { nombre: "Introducción a la geografía", tipo: "teorico" },
-    ]
+    semester: 1,
+    subjects: [
+      { name: "Introducción a la historia", type: "teórico" },
+      { name: "Mundo antiguo", type: "teórico" },
+      { name: "Historia y filosofía de la educación en chile y latam", type: "teórico" },
+      { name: "Autorregulación", type: "teórico" },
+      { name: "Introducción a la geografía", type: "teórico" },
+    ],
   },
   {
-    semestre: "Semestre 2",
-    ramos: [
-      { nombre: "Mundo medieval", tipo: "teorico" },
-      { nombre: "Sociedades indígenas de América y Chile", tipo: "teorico" },
-      { nombre: "Pensamiento político y estado", tipo: "teorico" },
-      { nombre: "Políticas públicas y sistema educativo chileno", tipo: "teorico" },
-      { nombre: "Lenguaje y comunicación", tipo: "teorico" },
-    ]
+    semester: 2,
+    subjects: [
+      { name: "Mundo medieval", type: "teórico" },
+      { name: "Sociedades indígenas de américa y chile", type: "teórico" },
+      { name: "Pensamiento político y estado", type: "teórico" },
+      { name: "Políticas públicas y sistema educativo chileno", type: "teórico" },
+      { name: "Lenguaje y comunicación", type: "teórico" },
+    ],
   },
   {
-    semestre: "Semestre 3",
-    ramos: [
-      { nombre: "Mundo moderno XVI-XVIII", tipo: "teórico" },
-      { nombre: "América colonial XVI-XVIII", tipo: "teórico" },
-      { nombre: "Chile colonial XVII-XVIII", tipo: "teórico" },
-      { nombre: "Teoría del pensamiento económico", tipo: "teórico" },
-      { nombre: "Gestión en el aula", tipo: "teórico" },
-      { nombre: "Ética y educación", tipo: "teórico" }
-    ]
+    semester: 3,
+    subjects: [
+      { name: "Mundo moderno XVI-XVIII", type: "teórico" },
+      { name: "América colonial XVI-XVIII", type: "teórico" },
+      { name: "Chile colonial XVII-XVIII", type: "teórico" },
+      { name: "Teoría del pensamiento económico", type: "teórico" },
+      { name: "Gestión en el aula", type: "teórico" },
+      { name: "Ética y educación", type: "teórico" },
+    ],
   },
   {
-    semestre: "Semestre 4",
-    ramos: [
-      { nombre: "Mundo contemporáneo XVIII-XIX", tipo: "teórico" },
-      { nombre: "América siglo XIX", tipo: "teórico" },
-      { nombre: "Chile siglo XIX", tipo: "teórico" },
-      { nombre: "Geografía física y problemáticas medioambientales", tipo: "teórico" },
-      { nombre: "Teoría del aprendizaje en el contexto de la adolescencia y cultura juvenil", tipo: "teórico" },
-      { nombre: "Práctica inicial", tipo: "práctico" }
-    ]
+    semester: 4,
+    subjects: [
+      { name: "Mundo contemporáneo XVIII-XIX", type: "teórico" },
+      { name: "América siglo XIX", type: "teórico" },
+      { name: "Chile siglo XIX", type: "teórico" },
+      { name: "Geografía física y problemáticas medioambientales", type: "teórico" },
+      { name: "Teoría del aprendizaje en el contexto de la adolescencia y cultura juvenil", type: "teórico" },
+      {
+        name: "Práctica inicial",
+        type: "práctico",
+        prerequisites: [
+          "Historia y filosofía de la educación en chile y latam",
+          "Políticas públicas y sistema educativo chileno",
+        ],
+      },
+    ],
   },
   {
-    semestre: "Semestre 5",
-    ramos: [
-      { nombre: "Mundo contemporáneo XX", tipo: "teórico" },
-      { nombre: "América siglo XX", tipo: "teórico" },
-      { nombre: "Chile siglo XX", tipo: "teórico" },
-      { nombre: "Ciudadanía, democracia y derechos humanos", tipo: "teórico" },
-      { nombre: "Gestión curricular para el aprendizaje", tipo: "teórico" },
-      { nombre: "Métodos de evaluación educativa", tipo: "teórico" },
-      { nombre: "Taller de integración 1", tipo: "práctico" }
-    ]
+    semester: 5,
+    subjects: [
+      { name: "Mundo contemporáneo XX", type: "teórico" },
+      { name: "América siglo XX", type: "teórico" },
+      { name: "Chile siglo XX", type: "teórico" },
+      { name: "Ciudadanía, democracia y derechos humanos", type: "teórico" },
+      { name: "Gestión curricular para el aprendizaje", type: "teórico" },
+      { name: "Métodos de evaluación educativa", type: "teórico" },
+      { name: "Taller de integración 1", type: "práctico" },
+    ],
   },
   {
-    semestre: "Semestre 6",
-    ramos: [
-      { nombre: "Historia de Estados Unidos y América Latina", tipo: "teórico" },
-      { nombre: "Teoría de la historia geográfica de la población", tipo: "teórico" },
-      { nombre: "Planificación curricular y evaluación", tipo: "teórico" },
-      { nombre: "Didáctica de la historia", tipo: "teórico" },
-      { nombre: "Taller de integración 2", tipo: "práctico" }
-    ]
+    semester: 6,
+    subjects: [
+      { name: "Historia de estados unidos y américa latina", type: "teórico" },
+      { name: "Teoría de la historia geográfica de la población y de los asentamientos humanos", type: "teórico" },
+      { name: "Planificación curricular y evaluación para la historia y ciencias sociales", type: "teórico" },
+      { name: "Didáctica de la historia", type: "teórico" },
+      {
+        name: "Taller de integración 2",
+        type: "práctico",
+        prerequisites: ["Taller de integración 1"],
+      },
+    ],
   },
   {
-    semestre: "Semestre 7",
-    ramos: [
-      { nombre: "Metodología de la investigación", tipo: "teórico" },
-      { nombre: "Historia del tiempo presente", tipo: "teórico" },
-      { nombre: "Geografía de Chile y América", tipo: "teórico" },
-      { nombre: "Didáctica de las ciencias sociales", tipo: "teórico" },
-      { nombre: "Práctica intermedia", tipo: "práctico" }
-    ]
+    semester: 7,
+    subjects: [
+      { name: "Metodología de la investigación en ciencias sociales", type: "teórico" },
+      { name: "Historia del tiempo presente", type: "teórico" },
+      { name: "Geografía de chile y américa", type: "teórico" },
+      { name: "Didáctica de las ciencias sociales", type: "teórico" },
+      {
+        name: "Practica",
+        type: "práctico",
+        prerequisites: ["Práctica inicial"],
+      },
+    ],
   },
   {
-    semestre: "Semestre 8",
-    ramos: [
-      { nombre: "Seminario de historia mundial", tipo: "teórico" },
-      { nombre: "Seminario de historia de Chile", tipo: "teórico" },
-      { nombre: "Seminario geografía regional de Valparaíso", tipo: "teórico" },
-      { nombre: "Didáctica de la formación ciudadana", tipo: "teórico" },
-      { nombre: "Métodos de investigación", tipo: "teórico" },
-      { nombre: "Taller reflexión práctica 1", tipo: "práctico" }
-    ]
+    semester: 8,
+    subjects: [
+      { name: "Seminario de historia mundial", type: "teórico" },
+      { name: "Seminario de historia de chile", type: "teórico" },
+      { name: "Seminario de geografía regional de Valparaíso", type: "teórico" },
+      { name: "Didáctica de la formación ciudadana", type: "teórico" },
+      { name: "Métodos de investigación", type: "teórico" },
+      {
+        name: "Taller de reflexión sobre la práctica 1",
+        type: "teórico",
+        prerequisites: ["Práctica inicial", "Practica"],
+      },
+    ],
   },
   {
-    semestre: "Semestre 9",
-    ramos: [
-      { nombre: "Monográfico historia I", tipo: "teórico" },
-      { nombre: "Seminario de grado I", tipo: "teórico" },
-      { nombre: "Práctica profesional", tipo: "práctico" }
-    ]
+    semester: 9,
+    subjects: [
+      { name: "Monográfico historia Y", type: "teórico" },
+      { name: "Seminario de grado I", type: "teórico" },
+      {
+        name: "Practica profesional",
+        type: "práctico",
+        prerequisites: ["Práctica inicial", "Practica", "Taller de reflexión sobre la práctica 1"],
+      },
+    ],
   },
   {
-    semestre: "Semestre 10",
-    ramos: [
-      { nombre: "Monográfico historia II", tipo: "teórico" },
-      { nombre: "Elaboración de proyectos educativos", tipo: "teórico" },
-      { nombre: "Taller reflexión práctica 2", tipo: "práctico" },
-      { nombre: "Seminario de grado II", tipo: "teórico" }
-    ]
+    semester: 10,
+    subjects: [
+      { name: "Monográfico historia II", type: "teórico" },
+      { name: "Elaboración de proyectos educativos en formación ciudadana", type: "teórico" },
+      {
+        name: "Taller de reflexión sobre la práctica 2",
+        type: "teórico",
+        prerequisites: ["Taller de reflexión sobre la práctica 1", "Practica profesional"],
+      },
+      { name: "Seminario de grado II", type: "teórico" },
+    ],
+  },
+]
+
+export default function MallaInteractiva() {
+  const [completed, setCompleted] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("completedSubjects")
+      return saved ? JSON.parse(saved) : []
+    }
+    return []
+  })
+
+  useEffect(() => {
+    localStorage.setItem("completedSubjects", JSON.stringify(completed))
+  }, [completed])
+
+  const toggleCompleted = (subjectName: string) => {
+    setCompleted((prev) =>
+      prev.includes(subjectName)
+        ? prev.filter((name) => name !== subjectName)
+        : [...prev, subjectName]
+    )
   }
-];
 
-// Cargar estado guardado
-const estadoGuardado = JSON.parse(localStorage.getItem("progresoMalla")) || {};
+  const isBlocked = (subject: any) => {
+    if (!subject.prerequisites) return false
+    return !subject.prerequisites.every((req: string) => completed.includes(req))
+  }
 
-datosMalla.forEach((semestreData, i) => {
-  const contenedor = document.createElement("div");
-  contenedor.classList.add("semestre");
-
-  const titulo = document.createElement("h2");
-  titulo.textContent = semestreData.semestre;
-  contenedor.appendChild(titulo);
-
-  semestreData.ramos.forEach((ramo, j) => {
-    const divRamo = document.createElement("div");
-    divRamo.classList.add("ramo");
-    if (ramo.tipo === "practico") {
-      divRamo.classList.add("practico");
+  const resetProgress = () => {
+    const confirmReset = window.confirm("¿Estás seguro de que quieres reiniciar el progreso?")
+    if (confirmReset) {
+      localStorage.removeItem("completedSubjects")
+      setCompleted([])
     }
+  }
 
-    const id = `${i}-${j}`;
-    divRamo.dataset.id = id;
-    divRamo.textContent = ramo.nombre;
-
-    if (estadoGuardado[id]) {
-      divRamo.classList.add("completado");
+  return (
+    <div className="p-4">
+      <h1 className="text-3xl font-bold mb-4">Malla de Pedagogía en Historia</h1>
+      <Button onClick={resetProgress} className="mb-6 bg-red-500 hover:bg-red-600 text-white">
+        Reiniciar progreso
+      </Button>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {courses.map((course) => (
+          <div
+            key={course.semester}
+            className="border rounded-2xl shadow-md p-4 bg-white"
+          >
+            <h2 className="text-xl font-semibold mb-2">Semestre {course.semester}</h2>
+            <ul className="space-y-2">
+              {course.subjects.map((subject) => {
+                const completedSubject = completed.includes(subject.name)
+                const blocked = isBlocked(subject)
+                return (
+                  <li
+                    key={subject.name}
+                    className={`flex items-center justify-between px-2 py-1 rounded-lg cursor-pointer ${
+                      completedSubject
+                        ? "line-through text-gray-400"
+                        : blocked
+                        ? "text-gray-400 opacity-50 cursor-not-allowed"
+                        : "hover:bg-blue-100"
+                    }`}
+                    onClick={() => {
+                      if (!blocked) toggleCompleted(subject.name)
+                    }}
+                  >
+                    <span>
+                      {subject.name}
+                      <span className="ml-2 text-xs text-gray-500">({subject.type})</span>
+                    </span>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
     }
-
-    divRamo.addEventListener("click", () => {
-      divRamo.classList.toggle("completado");
-    });
-
-    contenedor.appendChild(divRamo);
-  });
-
-  malla.appendChild(contenedor);
-});
-
-guardarBtn.addEventListener("click", () => {
-  const progreso = {};
-  document.querySelectorAll(".ramo").forEach(ramo => {
-    progreso[ramo.dataset.id] = ramo.classList.contains("completado");
-  });
-  localStorage.setItem("progresoMalla", JSON.stringify(progreso));
-  alert("¡Progreso guardado!");
-});
+                  
