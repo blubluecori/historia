@@ -16,7 +16,7 @@ button {
   margin-bottom: 20px;
   font-size: 14px;
   cursor: pointer;
-  background-color: #4caf50;
+  background-color: #ECAAC2;
   border: none;
   border-radius: 8px;
   color: white;
@@ -43,22 +43,22 @@ button {
 }
 
 .ramo:hover {
-  background-color: #c2ddff;
+  background-color: #EEBFD1;
 }
 
 .ramo.practico {
-  background-color: #fdf1d4;
+  background-color: #BED1E3;
 }
 
 .ramo.completado {
-  background-color: #a5d6a7;
+  background-color: #DABBE0;
   text-decoration: line-through;
   color: #555;
 }
 
 .ramo.bloqueado {
-  background-color: #eee;
-  color: #999;
+  background-color: #ECAAC2;
+  color: #555;
   cursor: not-allowed;
   border-style: dashed;
 }
